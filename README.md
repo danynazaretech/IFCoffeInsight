@@ -50,5 +50,7 @@ class CoffeInsight extends StatelessWidget {
       home: const ProducaoPage(),
     );
   }
+
+  ```
 }
     ```
