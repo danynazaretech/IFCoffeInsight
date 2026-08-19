@@ -8,7 +8,7 @@
         │              │              │
 
 
-    ```Flutter
+```Flutter
 // O material.dart importa  componentes do Flutter Material
 import 'package:flutter/material.dart';
 
@@ -50,7 +50,5 @@ class CoffeInsight extends StatelessWidget {
       home: const ProducaoPage(),
     );
   }
-
-  ```
 }
     ```
