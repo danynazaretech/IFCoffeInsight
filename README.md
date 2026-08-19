@@ -341,7 +341,275 @@ class _CafeCard extends StatelessWidget {
 
 
 
-```
 
+
+``` Python
+import 'package:flutter/material.dart';
+
+import 'venda_page.dart';
+
+class QualidadePage extends StatefulWidget {
+  const QualidadePage({super.key});
+
+  @override
+  State<QualidadePage> createState() =>
+      _QualidadePageState();
+}
+
+class _QualidadePageState
+    extends State<QualidadePage> {
+
+  final TextEditingController notaController =
+  TextEditingController();
+
+  int nota = 0;
+
+  String get classificacao {
+
+    if (nota >= 85) {
+      return 'Especial';
+    }
+
+    if (nota >= 70) {
+      return 'Superior';
+    }
+
+    return 'Comercial';
+  }
+
+  IconData get icone {
+
+    if (nota >= 85) {
+      return Icons.star;
+    }
+
+    if (nota >= 70) {
+      return Icons.thumb_up;
+    }
+
+    return Icons.coffee;
+  }
+
+  void calcular() {
+
+    setState(() {
+
+      nota =
+          int.tryParse(
+            notaController.text,
+          ) ?? 0;
+
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+
+      appBar: AppBar(
+        title: const Text(
+          'Qualidade',
+        ),
+      ),
+
+      body: SafeArea(
+
+        child: SingleChildScrollView(
+
+          padding: const EdgeInsets.all(20),
+
+          child: Column(
+
+            crossAxisAlignment:
+            CrossAxisAlignment.start,
+
+            children: [
+
+              const Text(
+                '⭐',
+                style: TextStyle(
+                  fontSize: 45,
+                ),
+              ),
+
+              const SizedBox(height: 10),
+
+              const Text(
+                'Avaliação do café',
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const SizedBox(height: 8),
+
+              Text(
+                'Digite a nota obtida na prova de '
+                    'xícara.',
+                style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: 16,
+                ),
+              ),
+
+              const SizedBox(height: 30),
+
+              TextField(
+
+                controller: notaController,
+
+                keyboardType:
+                TextInputType.number,
+
+                decoration:
+                InputDecoration(
+
+                  labelText:
+                  'Nota do café',
+
+                  hintText:
+                  'Ex.: 86',
+
+                  prefixIcon:
+                  const Icon(
+                    Icons.star,
+                  ),
+
+                  border:
+                  OutlineInputBorder(
+                    borderRadius:
+                    BorderRadius.circular(16),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 15),
+
+              SizedBox(
+
+                width: double.infinity,
+                height: 55,
+
+                child: ElevatedButton.icon(
+
+                  onPressed: calcular,
+
+                  icon: const Icon(
+                    Icons.calculate,
+                  ),
+
+                  label: const Text(
+                    'Calcular qualidade',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 30),
+
+              // RESULTADO
+              Container(
+
+                width: double.infinity,
+
+                padding:
+                const EdgeInsets.all(25),
+
+                decoration:
+                BoxDecoration(
+
+                  borderRadius:
+                  BorderRadius.circular(24),
+
+                  border: Border.all(
+                    color: Colors.grey.shade300,
+                  ),
+
+                  color: Colors.white,
+                ),
+
+                child: Column(
+
+                  children: [
+
+                    Icon(
+                      icone,
+                      size: 55,
+                      color:
+                      const Color(0xFF6F4E37),
+                    ),
+
+                    const SizedBox(height: 15),
+
+                    Text(
+                      '$nota pontos',
+                      style: const TextStyle(
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 5),
+
+                    Text(
+                      classificacao,
+                      style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 30),
+
+              SizedBox(
+
+                width: double.infinity,
+                height: 55,
+
+                child: ElevatedButton.icon(
+
+                  onPressed: () {
+
+                    Navigator.push(
+                      context,
+
+                      MaterialPageRoute(
+                        builder: (context) {
+                         return VendaPage(
+                           notaQualidade: nota,
+                         );
+                        },
+                      ),
+                    );
+
+                  },
+
+                  icon: const Icon(
+                    Icons.attach_money,
+                  ),
+
+                  label: const Text(
+                    'Registrar venda',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+```
 
 
