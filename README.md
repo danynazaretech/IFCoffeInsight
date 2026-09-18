@@ -53,6 +53,7 @@ class CoffeInsight extends StatelessWidget {
 }
 ```
 
+producao_page.dart
 
 ```Python
 import 'package:flutter/material.dart';
@@ -341,7 +342,7 @@ class _CafeCard extends StatelessWidget {
 
 
 
-
+qualidade_page.dart
 
 ``` Python
 import 'package:flutter/material.dart';
@@ -611,6 +612,9 @@ class _QualidadePageState
   }
 }
 ```
+
+venda_page.dart
+
 ```Python 
 import 'package:flutter/material.dart';
 
